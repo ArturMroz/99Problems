@@ -3,7 +3,7 @@
 
 
 let elementAt xs n =
-    List.nth xs (n - 1)
+    xs |> List.item (n - 1)
 
 let elementAt' (xs : 'a list) n =
     xs.[n - 1]
@@ -12,4 +12,4 @@ let rec elementAt'' xs n =
     match xs, n with
     | [], _ -> failwith "empty list"
     | x :: _, 1 -> x
-    | x :: xs, n -> elementAt'' xs (n - 1)
+    | _ :: xs, n -> elementAt'' xs (n - 1)
