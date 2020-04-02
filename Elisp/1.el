@@ -1,4 +1,4 @@
-;;; 1.el --- find last element exercise
+;;; 1.el --- Find last element (99 problems)
 
 ;;; Commentary:
 
@@ -25,7 +25,7 @@
   "Return last element of MY-LIST, Common Lisp reduce."
   (cond
    ((null my-list) nil)
-   (t (cl-reduce (lambda (acc x) x) my-list))))
+   (t (cl-reduce (lambda (_ x) x) my-list))))
 
 (defun my-last4 (my-list)
   "Return last element of MY-LIST."
