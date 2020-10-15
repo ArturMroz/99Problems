@@ -12,10 +12,10 @@
   (length my-list))
 
 (defun my-length2 (my-list)
-  "Return number of elements of MY-LIST, using reduce."
-  (cl-reduce
-   (lambda (acc _) (1+ acc))
-   my-list))
+  "Return number of elements of MY-LIST, using recursion."
+  (if (null my-list)
+      0
+    (1+ (my-length2 (cdr my-list)))))
 
 (defun my-length3 (my-list)
   "Return number of elements of MY-LIST, using tail recursion."
@@ -24,11 +24,17 @@
     (`(,_ . ,xs) (1+ (my-length3 xs)))))
 
 (defun my-length4 (my-list)
+  "Return number of elements of MY-LIST, using reduce."
+  (cl-reduce
+   (lambda (acc _) (1+ acc))
+   my-list))
+
+(defun my-length5 (my-list)
   "Return number of elements of MY-LIST, using apply and map."
   (apply #'+ (mapcar
               (lambda (_) 1)
               my-list)))
 
-(my-length4 '(1 2 3 21 23))
+(my-length2 '(1 2 3 21 23))
 
 ;;; 4.el ends here
